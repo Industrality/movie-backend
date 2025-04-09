@@ -1,14 +1,14 @@
 services:
 
-  movie-backend-db:
-    container_name: movie-backend-db
+  movie_db:
+    container_name: movie_db
     image: postgres:16
     environment:
       POSTGRES_USER: movie
       POSTGRES_PASSWORD: movie
       POSTGRES_DB: movie
     volumes:
-      - movie-backend-db:/var/lib/postgresql/data
+      - movie_db:/var/lib/postgresql/data
     ports:
       - 5499:5432
     healthcheck:
@@ -17,5 +17,13 @@ services:
       timeout: 3s
       retries: 3
 
+  movie_redis:
+    container_name: movie_redis
+    image: redis:8.0-M03-alpine
+    ports:
+      - 6379:6379
+    command: redis-server --requirepass changeme
+
 volumes:
-  movie-backend-db:
+  movie_db_data:
+  movie_redis_data:

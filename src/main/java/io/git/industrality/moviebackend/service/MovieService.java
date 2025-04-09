@@ -9,14 +9,22 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MovieService {
-    private final MovieRepository movieRepository;
 
-    public Movie getMovie(Long id) {
-      return movieRepository.findById(id).get();
-    }
+  private final MovieRepository movieRepository;
 
-    public List<Movie> getAllMovies() {
-      return movieRepository.findAll();
-    }
+  public Movie getMovie(Long id) {
+    return movieRepository.findById(id).get();
+  }
 
+  public List<Movie> getAllMovies() {
+    return movieRepository.findAll();
+  }
+
+  public Movie addMovie(Movie movie) {
+    return movieRepository.save(movie);
+  }
+
+  public void deleteMovie(Long movieId) {
+    movieRepository.deleteById(movieId);
+  }
 }
