@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: movie
       POSTGRES_DB: movie
     volumes:
-      - movie_db:/var/lib/postgresql/data
+      - movie_db_data:/var/lib/postgresql/data
     ports:
       - 5499:5432
     healthcheck:
