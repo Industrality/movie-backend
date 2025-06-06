@@ -6,11 +6,15 @@ spring:
     url: jdbc:postgresql://localhost:5499/movie?autoreconnect=true
     username: movie
     password: movie
-
   flyway:
     enabled: true
     validate-on-migrate: true
     locations: classpath:db/migration
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8888/realms/movie
 
 logging:
   level:

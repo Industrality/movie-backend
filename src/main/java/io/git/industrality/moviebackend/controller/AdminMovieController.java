@@ -3,6 +3,7 @@ package io.git.industrality.moviebackend.controller;
 import io.git.industrality.moviebackend.entity.Movie;
 import io.git.industrality.moviebackend.service.MovieService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +23,13 @@ public class AdminMovieController {
     return movieService.addMovie(movie);
   }
 
-  @GetMapping(value = "/movie/{movieId}")
+  @DeleteMapping(value = "/movie/{movieId}")
   public void deleteMovie(@PathVariable Long movieId) {
     movieService.deleteMovie(movieId);
+  }
+
+  @GetMapping(value = "/movie/{movieId}")
+  public Movie getMovie(@PathVariable Long movieId) {
+    return movieService.getMovie(movieId);
   }
 }
